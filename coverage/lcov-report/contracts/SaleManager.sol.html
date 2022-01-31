@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts\SaleManager.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> SaleManager.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">77.12% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>91/118</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">44.19% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>38/86</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">73.08% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>19/26</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">79.17% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>95/120</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// SPDX-License-Identifier: MIT
+pragma solidity ^ 0.8.10;
+&nbsp;
+import "./SpectraNFT.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+&nbsp;
+contract SaleManager is Ownable {
+&nbsp;
+    // uint8 constant IS_USER = 0;
+    uint8 constant IS_RESELLER = 1;
+    uint8 constant IS_CREATOR = 2;
+&nbsp;
+    struct SaleInfo {
+        uint256 tokenId;
+        string tokenHash;
+        address creator;
+        address currentOwner;
+        uint256 startPrice;
+        address maxBidder;
+        uint256 maxBid;
+        uint256 startTime;
+        uint256 interval;
+        uint24 royaltyRatio;
+        uint8 kindOfCoin;
+        bool _isOnSale;
+    }
+&nbsp;
+    enum AuctionState { 
+        OPEN,
+        CANCELLED,
+        ENDED,
+        DIRECT_BUY
+    }
+&nbsp;
+    address mkOwner;
+    address mkNFTaddress;
+    SpectraNFT mkNFT;
+    IERC20 SPCToken;
+&nbsp;
+    uint _saleIdCounter;
+    bool _status;
+    bool _isMinting;
+&nbsp;
+    mapping(uint =&gt; SaleInfo) _allSaleInfo;
+    mapping(string =&gt; uint) _getSaleId;
+    mapping(string =&gt; bool) _tokenHashExists;
+    mapping(address =&gt; uint8) _isCreator;
+    mapping(address =&gt; uint256) _mintingFees;
+    mapping(address =&gt; uint24) _sellingRatio;
+&nbsp;
+    modifier onlyAdmin() {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_isCreator[msg.sender] == IS_CREATOR || mkOwner == msg.sender, "Not NFT creater...");
+        _;
+    }
+&nbsp;
+    modifier onlyReseller() {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_isCreator[msg.sender] == IS_RESELLER || _isCreator[msg.sender] == IS_CREATOR || mkOwner == msg.sender, "Not NFT reseller...");
+        _;
+    }
+&nbsp;
+    modifier notOnlyNFTOwner(string memory _tokenHash) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_allSaleInfo[_getSaleId[_tokenHash]].currentOwner != msg.sender, "NFT Owner cannot bid...");
+        _;
+    }
+&nbsp;
+    modifier nonReentrant() {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_status != true, "ReentrancyGuard: reentrant call");
+        _status = true;
+        _;
+        _status = false;
+    }
+&nbsp;
+    constructor(address _nftAddress, address _spcAddress) {
+        mkOwner = msg.sender;
+        mkNFTaddress = _nftAddress;
+        SPCToken = IERC20(_spcAddress);
+        _saleIdCounter = 0;
+        _status = false;
+        _isMinting = false;
+    }
+&nbsp;
+    function mintSingleNFT(string memory _tokenHash) internal {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(!_tokenHashExists[_tokenHash], "Existing NFT hash value....");
+        mkNFT = SpectraNFT(mkNFTaddress);
+        mkNFT.mintNFT(_tokenHash);
+        _tokenHashExists[_tokenHash] = true;
+        _isMinting = true;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function mintMultipleNFT(string[] memory _tokenHashs) internal {</span>
+<span class="cstat-no" title="statement not covered" >        for (uint256 i = 0; i &lt; _tokenHashs.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >            require(!_tokenHashExists[_tokenHashs[i]], "Existing NFT hash value....")</span>;
+<span class="cstat-no" title="statement not covered" >            mkNFT = SpectraNFT(mkNFTaddress)</span>;
+<span class="cstat-no" title="statement not covered" >            mkNFT.mintNFT(_tokenHashs[i])</span>;
+<span class="cstat-no" title="statement not covered" >            _tokenHashExists[_tokenHashs[i]] = true</span>;
+        }
+<span class="cstat-no" title="statement not covered" >        _isMinting = true</span>;
+    }
+&nbsp;
+    function createSale(string memory _tokenHash, uint _interval, uint _startPrice, uint24 _royalty, uint8 _kind) public nonReentrant onlyReseller returns (bool) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_interval &gt;= 0, "Invalid auction interval....");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_royalty &gt;= 0, "Invalid royalty value....");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_tokenHashExists[_tokenHash], "Non-Existing NFT hash value....");
+&nbsp;
+        SaleInfo memory saleInfo;
+&nbsp;
+        if (!_isMinting) {
+            mkNFT.tranferNFT(msg.sender, address(this), _tokenHash);
+            saleInfo = SaleInfo(_saleIdCounter, _tokenHash, _allSaleInfo[_getSaleId[_tokenHash]].creator, msg.sender, _startPrice, address(0), 0, block.timestamp, _interval, _royalty, _kind, true);
+        } else {
+            saleInfo = SaleInfo(_saleIdCounter, _tokenHash, msg.sender, msg.sender, _startPrice, address(0), 0, block.timestamp, _interval, _royalty, _kind, true);
+        }
+              
+        _allSaleInfo[_saleIdCounter] = saleInfo;
+        _getSaleId[_tokenHash] = _saleIdCounter;
+        _saleIdCounter++;
+        return true;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function createBatchSale(string[] memory _tokenHashs, uint _startPrice, uint24 _royalty, uint8 _kind) public {</span>
+<span class="cstat-no" title="statement not covered" >        for (uint256 i = 0; i &lt; _tokenHashs.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >            createSale(_tokenHashs[i], 0, _startPrice, _royalty, _kind)</span>;
+        }
+    }
+&nbsp;
+    function singleMintOnSale(string memory _tokenHash, uint _interval, uint _startPrice, uint24 _royalty, uint8 _kind) external payable onlyAdmin {
+        mintSingleNFT(_tokenHash);
+        createSale(_tokenHash, _interval, _startPrice, _royalty, _kind);
+        _isMinting = false;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function batchMintOnSale(string[] memory _tokenHashs, uint _startPrice, uint24 _royalty, uint8 _kind) external payable onlyAdmin {</span>
+<span class="cstat-no" title="statement not covered" >        mintMultipleNFT(_tokenHashs)</span>;
+<span class="cstat-no" title="statement not covered" >        createBatchSale(_tokenHashs, _startPrice, _royalty, _kind)</span>;
+<span class="cstat-no" title="statement not covered" >        _isMinting = false</span>;
+    }
+&nbsp;
+    function destroySale(string memory _tokenHash) external onlyReseller nonReentrant returns (bool) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_tokenHashExists[_tokenHash], "Non-Existing NFT hash value....");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(getAuctionState(_tokenHash) != AuctionState.CANCELLED, "Auction state is already cancelled...");
+&nbsp;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (_allSaleInfo[_getSaleId[_tokenHash]].maxBid != 0) {
+<span class="cstat-no" title="statement not covered" >            customizedTransfer(payable(_allSaleInfo[_getSaleId[_tokenHash]].maxBidder), _allSaleInfo[_getSaleId[_tokenHash]].maxBid, _allSaleInfo[_getSaleId[_tokenHash]].kindOfCoin)</span>;
+        }
+&nbsp;
+        mkNFT.tranferNFT(address(this), _allSaleInfo[_getSaleId[_tokenHash]].currentOwner, _tokenHash);
+        _allSaleInfo[_getSaleId[_tokenHash]]._isOnSale = false;
+        emit DestroySale(_tokenHash);
+        return true;
+    }
+&nbsp;
+    function placeBid(string memory _tokenHash) payable external nonReentrant notOnlyNFTOwner(_tokenHash) returns (bool) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_tokenHashExists[_tokenHash], "Non-Existing NFT hash value....");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(getAuctionState(_tokenHash) == AuctionState.OPEN || getAuctionState(_tokenHash) == AuctionState.DIRECT_BUY, "Auction state is not open...");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(msg.value &gt;= _allSaleInfo[_getSaleId[_tokenHash]].startPrice, "Starting price is too low...");
+&nbsp;
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (_allSaleInfo[_getSaleId[_tokenHash]].kindOfCoin &gt; 0) {
+            SPCToken.transferFrom(msg.sender, address(this), msg.value);
+        }
+&nbsp;
+        address lastHightestBidder = _allSaleInfo[_getSaleId[_tokenHash]].maxBidder;
+        uint256 lastHighestBid = _allSaleInfo[_getSaleId[_tokenHash]].maxBid;
+        _allSaleInfo[_getSaleId[_tokenHash]].maxBid = msg.value;
+        _allSaleInfo[_getSaleId[_tokenHash]].maxBidder = msg.sender;
+&nbsp;
+        if (lastHighestBid != 0) {
+            customizedTransfer(payable(lastHightestBidder), lastHighestBid, _allSaleInfo[_getSaleId[_tokenHash]].kindOfCoin);
+        }
+    
+        emit PlaceBid(msg.sender, msg.value);
+        
+        return true;
+    } 
+&nbsp;
+    function performBid(string memory _tokenHash) external nonReentrant returns (bool) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_tokenHashExists[_tokenHash], "Non-Existing NFT hash value....");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(getAuctionState(_tokenHash) == AuctionState.OPEN || getAuctionState(_tokenHash) == AuctionState.ENDED || getAuctionState(_tokenHash) == AuctionState.DIRECT_BUY, "Auction state is not correct...");
+        SaleInfo memory saleInfo = _allSaleInfo[_getSaleId[_tokenHash]];
+        uint256 royaltyAmount = saleInfo.maxBid * saleInfo.royaltyRatio / 100;
+        uint256 salePrice = saleInfo.maxBid - saleInfo.maxBid * _sellingRatio[saleInfo.currentOwner] / 100 - royaltyAmount;
+&nbsp;
+        mkNFT.tranferNFT(address(this), saleInfo.maxBidder, _tokenHash);
+&nbsp;
+        customizedTransfer(payable(saleInfo.creator), royaltyAmount, saleInfo.kindOfCoin);
+        customizedTransfer(payable(saleInfo.currentOwner), salePrice, saleInfo.kindOfCoin);
+&nbsp;
+        saleInfo.currentOwner = saleInfo.maxBidder;
+        saleInfo.startPrice = saleInfo.maxBid;
+        saleInfo._isOnSale = false;
+&nbsp;
+        _allSaleInfo[_getSaleId[_tokenHash]] = saleInfo;
+&nbsp;
+        emit PerformBid(msg.sender, saleInfo.maxBidder, saleInfo.maxBid);
+        return true;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function getAuthentication(address _addr) external view returns (uint8) {</span>
+<span class="cstat-no" title="statement not covered" >        require(_addr != address(0), "Invalid input address...")</span>;
+<span class="cstat-no" title="statement not covered" >        return _isCreator[_addr];</span>
+    }
+&nbsp;
+    function getAuctionState(string memory _tokenHash) public view returns (AuctionState) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!_allSaleInfo[_getSaleId[_tokenHash]]._isOnSale) <span class="cstat-no" title="statement not covered" >return AuctionState.CANCELLED;</span>
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (_allSaleInfo[_getSaleId[_tokenHash]].interval == 0) return AuctionState.DIRECT_BUY;
+<span class="cstat-no" title="statement not covered" >        if (block.timestamp &gt;= _allSaleInfo[_getSaleId[_tokenHash]].startTime + _allSaleInfo[_getSaleId[_tokenHash]].interval) <span class="cstat-no" title="statement not covered" >return AuctionState.ENDED;</span></span>
+<span class="cstat-no" title="statement not covered" >        return AuctionState.OPEN;</span>
+    } 
+&nbsp;
+    function getSaleInfo(string memory _tokenHash) public view returns (SaleInfo memory) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_tokenHashExists[_tokenHash], "Non-Existing NFT hash value....");
+&nbsp;
+        return _allSaleInfo[_getSaleId[_tokenHash]];
+    }
+&nbsp;
+    function getWithdrawBalance(uint8 _kind) public view returns (uint256) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_kind &gt;= 0, "Invalid cryptocurrency...");
+&nbsp;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (_kind == 0) {
+<span class="cstat-no" title="statement not covered" >          return address(this).balance;</span>
+        } else {
+          return SPCToken.balanceOf(address(this));
+        }
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function setOwner(address payable _newOwner) external onlyOwner {</span>
+<span class="cstat-no" title="statement not covered" >        require(_newOwner != address(0), "Invalid input address...")</span>;
+<span class="cstat-no" title="statement not covered" >        mkOwner = _newOwner</span>;
+<span class="cstat-no" title="statement not covered" >        transferOwnership(mkOwner)</span>;
+    }
+&nbsp;
+    function setAuthentication(address _addr, uint8 _flag) external onlyOwner {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_addr != address(0), "Invalid input address...");
+        _isCreator[_addr] = _flag;
+    }
+&nbsp;
+    function setMintingFee(address _creater, uint256 _amount) external onlyOwner {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_creater != address(0), "Invalid input address...");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_amount &gt;= 0, "Too small amount");
+        _mintingFees[_creater] = _amount;
+    }
+&nbsp;
+    function setSellingFee(address _seller, uint24 _ratio) external onlyOwner {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_seller != address(0), "Invalid input address...");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_ratio &gt;= 0, "Too small ratio");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_ratio &lt; 100, "Too large ratio");
+        _sellingRatio[_seller] = _ratio;
+    }
+&nbsp;
+    function customizedTransfer(address payable _to, uint256 _amount, uint8 _kind) internal {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_to != address(0), "Invalid address...");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_amount &gt;= 0, "Invalid transferring amount...");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_kind &gt;= 0, "Invalid cryptocurrency...");
+        
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (_kind == 0) {
+<span class="cstat-no" title="statement not covered" >          _to.transfer(_amount)</span>;
+        } else {
+          SPCToken.transfer(_to, _amount);
+        }
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function withDraw(uint256 _amount, uint8 _kind) external onlyOwner {</span>
+<span class="cstat-no" title="statement not covered" >        require(_amount &gt; 0, "Invalid withdraw amount...")</span>;
+<span class="cstat-no" title="statement not covered" >        require(_kind &gt;= 0, "Invalid cryptocurrency...")</span>;
+<span class="cstat-no" title="statement not covered" >        require(getWithdrawBalance(_kind) &gt; _amount, "None left to withdraw...")</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        customizedTransfer(payable(msg.sender), _amount, _kind)</span>;
+    }
+&nbsp;
+    function withDrawAll(uint8 _kind) external onlyOwner {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_kind &gt;= 0, "Invalid cryptocurrency...");
+        uint256 remaining = getWithdrawBalance(_kind);
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(remaining &gt; 0, "None left to withdraw...");
+&nbsp;
+        customizedTransfer(payable(msg.sender), remaining, _kind);
+    }
+&nbsp;
+    receive() payable external {
+&nbsp;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    fallback() payable external {</span>
+&nbsp;
+    }
+&nbsp;
+    event PlaceBid(address bidder, uint bid);
+    event PerformBid(address nftSeller, address nftBuyer, uint256 amount);
+    event DestroySale(string tokenHash);
+    // event Withdraw(address to, uint256 amount, uint8 kind);
+    // event WithdrawAll(address to, uint8 kind);
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jan 15 2022 02:16:20 GMT+1000 (Vladivostok Standard Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
